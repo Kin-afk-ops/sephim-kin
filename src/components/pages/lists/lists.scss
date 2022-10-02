@@ -1,0 +1,14 @@
+.lists {
+  width: 1200px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .movieListItems {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+  }
+}

@@ -1,0 +1,38 @@
+.movieListItem {
+  width: 23%;
+  padding: 0 8px;
+  position: relative;
+  cursor: pointer;
+  margin-top: 30px;
+
+  .movieListItemPoster {
+    img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    div {
+      background-color: #ffffcc;
+      color: #ff3300;
+      width: 50px;
+      padding: 2px;
+      font-size: 16px;
+      position: absolute;
+      bottom: 33px;
+      left: 5px;
+    }
+  }
+
+  .movieListItemName {
+    font-size: 16px;
+    text-align: center;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      color: rgb(238, 238, 34);
+    }
+  }
+}

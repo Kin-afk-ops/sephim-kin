@@ -1,0 +1,28 @@
+.movieList {
+  padding: 0 20px;
+  margin-top: 20px;
+  color: white;
+  font-size: 20px;
+  width: 80%;
+
+  .movieListTitle {
+    display: flex;
+    justify-content: space-between;
+
+    .linkList {
+      color: rgb(238, 238, 34);
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .movieListItems {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+  }
+}

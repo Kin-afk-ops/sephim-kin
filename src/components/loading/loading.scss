@@ -1,0 +1,34 @@
+.loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 30px;
+
+  .container {
+    user-select: none;
+
+    span {
+      font-size: 3em;
+      font-weight: 700;
+      display: inline-block;
+      animation: changeColor 1s linear infinite;
+    }
+  }
+}
+
+@keyframes changeColor {
+  0%,
+  100% {
+    color: #03e9f4;
+    transform: translateY(0);
+    text-shadow: 0 0 15px #03e9f4, 0 0 25px #03e9f4;
+  }
+  50% {
+    color: #7fffd4;
+    transform: translateY(-10px);
+    text-shadow: 0 0 15px #7fffd4;
+  }
+}

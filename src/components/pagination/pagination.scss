@@ -1,0 +1,28 @@
+.pagination {
+  display: flex;
+  margin-top: 30px;
+  .paginationPrev {
+    cursor: pointer;
+    width: 120px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    color: white;
+    background-color: #003333;
+  }
+
+  .paginationNext {
+    cursor: pointer;
+    margin-left: 20px;
+    width: 120px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    color: white;
+    background-color: #003333;
+  }
+}

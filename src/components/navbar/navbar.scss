@@ -1,0 +1,118 @@
+.navbar {
+  margin-top: 70px;
+  width: 80%;
+  display: flex;
+  height: 70px;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    display: none;
+  }
+
+  .phoneButton {
+    display: none;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 40px;
+    margin-left: 20px;
+  }
+
+  .navbarList {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .navbarItems {
+      &:first-child {
+        margin-left: 30px;
+      }
+      &:hover {
+        ul {
+          display: flex;
+        }
+      }
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: white;
+      width: 200px;
+      cursor: pointer;
+
+      position: relative;
+
+      div {
+        i {
+          margin-right: 10px;
+        }
+
+        // width: 100%;
+        // height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .navbarItemsLink {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      div,
+      .navbarItemsLink {
+        &:hover {
+          transform: scale(1.1);
+          text-shadow: 0 0 10px #00ffff;
+          font-weight: 500;
+          transition: 0.3s;
+        }
+      }
+
+      ul {
+        list-style: none;
+        position: absolute;
+        top: 100%;
+        background-color: #000033;
+        z-index: 999;
+        display: none;
+        flex-wrap: wrap;
+        left: 0;
+        width: 460px;
+        font-size: 14px;
+        &:hover {
+          display: flex;
+        }
+
+        li {
+          width: 112px;
+          height: 60px;
+
+          .link {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 20px #00ffff;
+            box-shadow: 0 0 20px -1px #00ffff;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
+}

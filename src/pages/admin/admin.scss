@@ -1,0 +1,86 @@
+.admin {
+  .adminAdd {
+    .adminForm {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      input {
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        padding: 20px;
+        width: 380px;
+        height: 20px;
+      }
+
+      button {
+        margin-top: 30px;
+        padding: 10px;
+        height: 50px;
+        width: 100px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        font-weight: 500;
+        background-color: #003333;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .adminSearch {
+    width: 300px;
+    height: 30px;
+    margin: 30px auto 30px;
+    input {
+      border-radius: 10px;
+      outline: none;
+      border: none;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
+  }
+
+  .adminMovie {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    table {
+      th,
+      td {
+        border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        text-align: center;
+        padding: 20px;
+        color: white;
+        width: 400px;
+      }
+
+      td {
+        &:last-child {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .adminIcon {
+        margin-left: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}

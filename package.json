@@ -45,5 +45,6 @@
   },
   "devDependencies": {
     "video.js": "^7.20.3"
-  }
+  },
+  "proxy": "https://linh-video-app-sephim.herokuapp.com/api"
 }

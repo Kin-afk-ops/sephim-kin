@@ -1,20 +1,21 @@
 .movieList {
   padding: 0 20px;
-  margin-top: 20px;
+  margin-top: 60px;
   color: white;
   font-size: 20px;
-  width: 80%;
+  width: 85%;
 
   .movieListTitle {
     display: flex;
     justify-content: space-between;
 
     .linkList {
-      color: rgb(238, 238, 34);
-      font-weight: 500;
+      color: white;
 
       &:hover {
-        text-decoration: underline;
+        transform: scale(1.1);
+        transition: 0.1s;
+        text-shadow: 0 0 24px #ff3333;
         cursor: pointer;
       }
     }

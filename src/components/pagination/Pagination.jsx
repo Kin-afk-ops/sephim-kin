@@ -1,32 +1,37 @@
 import "./pagination.scss";
+import ReactPaginate from "react-paginate";
 
-const Pagination = (props) => {
-  const { pagination, onPageChange } = props;
-  const { page, totalPage } = pagination;
+const Pagination = ({
+  totalMovie,
+  moviesPerPage,
+  setCurrentPage,
+  currentPage,
+}) => {
+  let pages = [];
 
-  const handleOnChange = (newPage) => {
-    if (onPageChange) {
-      onPageChange(newPage);
-    }
+  for (var i = 1; i <= Math.ceil(totalMovie / moviesPerPage); i++) {
+    pages.push(i);
+  }
+
+  const handlePageClick = (data) => {
+    setCurrentPage(data.selected + 1);
   };
 
   return (
     <div>
       <div className="pagination">
-        <button
-          className="paginationPrev"
-          disabled={page <= 1}
-          onClick={() => handleOnChange(page - 1)}
-        >
-          Trang trước
-        </button>
-        <button
-          className="paginationNext"
-          disabled={page >= totalPage}
-          onClick={() => handleOnChange(page + 1)}
-        >
-          Trang sau
-        </button>
+        <div>
+          <ReactPaginate
+            className="paginationPage"
+            previousLabel="<<"
+            nextLabel=">>"
+            breakLabel={"..."}
+            pageCount={pages.length}
+            marginPagesDisplayed={2}
+            onPageChange={handlePageClick}
+            activeClassName={"active"}
+          />
+        </div>
       </div>
     </div>
   );

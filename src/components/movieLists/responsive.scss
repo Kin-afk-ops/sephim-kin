@@ -1,0 +1,20 @@
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .movieList {
+    margin: 60px auto 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .movieList {
+    .movieListTitle {
+      h3 {
+        font-size: 16px;
+      }
+
+      .linkList {
+        font-size: 14px;
+      }
+    }
+    width: 100%;
+  }
+}

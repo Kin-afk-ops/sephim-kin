@@ -5,12 +5,15 @@ const Loading = () => {
     <div className="loading">
       <div className="container">
         <span>L</span>
-        <span>o</span>
-        <span>a</span>
-        <span>d</span>
-        <span>i</span>
-        <span>n</span>
-        <span>g</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
         <span>.</span>
         <span>.</span>
         <span>.</span>

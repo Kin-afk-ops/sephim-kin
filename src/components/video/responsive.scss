@@ -1,0 +1,29 @@
+@media (max-width: 768px) {
+  .video {
+    .singleMovieEp {
+      padding: 10px;
+      width: 400px;
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .video {
+    padding: 10px;
+    .singleMovieEp {
+      width: 390px;
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .video {
+    padding: 10px;
+    .singleMovieEp {
+      width: 312px;
+      padding: 0;
+    }
+  }
+}

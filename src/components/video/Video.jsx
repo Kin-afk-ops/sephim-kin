@@ -1,53 +1,82 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./video.scss";
+import "./responsive.scss";
 
 const Video = (props) => {
   const location = useLocation();
-  const { movie, name } = props;
-  console.log(movie);
-  console.log(name);
+  const { movie, name, episode_current } = props;
   const infoMovie = movie.episodes;
-  console.log(infoMovie);
   const slug = location.pathname.split("/")[3];
-  const data = infoMovie[0].server_data;
-  console.log(data);
+  let dataArray = [];
+  const [serverMovie, setServerMovie] = useState(infoMovie[0].server_name);
+  const [statusServer, setStatusServer] = useState(false);
+
   let urlMovie = "";
-  const severMovie = [];
+  let fileName = "";
+  const severName = [];
 
   infoMovie.map((i) => {
-    severMovie.push(i.server_name);
+    severName.push(i.server_name);
   });
 
-  data.map((d) => {
-    if (d.slug === slug) {
-      urlMovie = d.link_embed;
+  infoMovie.map((infoData) => {
+    if (infoData.server_name === serverMovie) {
+      dataArray = infoData.server_data;
     }
   });
 
-  console.log(urlMovie);
+  if (dataArray.length !== 0) {
+    dataArray.map((data) => {
+      if (data.slug === slug || data.slug === "full") {
+        urlMovie = data.link_embed;
+        fileName = data.filename;
+      }
+    });
+  }
 
   return (
     <div className="video">
-      <iframe
-        allowFullScreen
-        style={{ border: "none" }}
-        width="720"
-        height="480"
-        src={urlMovie}
-      ></iframe>
+      <h3>{fileName}</h3>
+      <div className="container">
+        <iframe
+          className="responsive-iframe"
+          allowFullScreen
+          style={{ border: "none" }}
+          width="720"
+          height="480"
+          src={urlMovie}
+        ></iframe>
+      </div>
 
       <div className="videoServer">
-        {severMovie.map((s, index) => (
-          <div key={index}>{s}</div>
+        {severName.map((s, index) => (
+          <button
+            className={s === serverMovie ? "active" : " "}
+            onClick={() => setServerMovie(s)}
+            key={index}
+          >
+            {s}
+          </button>
         ))}
       </div>
-      <div className="singleMovieEp">
-        {data.map((d, index) => (
-          <Link className="link ep" to={`/watch/${name}/${d.slug}`}>
-            {d.name}
-          </Link>
-        ))}
-      </div>
+      {episode_current !== "Full" && (
+        <>
+          <span>Hãy chọn tập phim để xem phim nhé!</span>
+          <div className="singleMovieEp">
+            {dataArray.length !== 0 &&
+              dataArray.map((d, index) => (
+                <Link
+                  className={d.slug === slug ? "link ep epActive" : "link ep"}
+                  to={`/watch/${name}/${d.slug}`}
+                  key={index}
+                >
+                  {d.name}
+                </Link>
+              ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

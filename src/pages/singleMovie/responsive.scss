@@ -1,0 +1,55 @@
+@media (max-width: 1024px) {
+  .singleMovie {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .singleMovie {
+    .singleMovieCard {
+      .singleMovieTop {
+        .singleMovieInfo {
+          div {
+            .singleMovieInfoText {
+              span {
+                &:first-child {
+                  width: 115px;
+                }
+                &:last-child {
+                  width: calc(100% - 115px);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .singleMovie {
+    .singleMovieCard {
+      .singleMovieName {
+        padding-left: 0;
+        text-align: center;
+      }
+
+      .singleMovieTop {
+        padding-left: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .singleMovieInfo {
+          margin-left: 0;
+        }
+
+        .singleMovieContent {
+          margin: 20px 0 0;
+          width: 80%;
+        }
+      }
+    }
+  }
+}

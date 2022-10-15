@@ -1,7 +1,7 @@
-import SingleMovieSimilar from "../../singleMovieSimilar/SingleMovieSimilar";
-import Loading from "../../loading/Loading";
-import Video from "../../video/Video";
+import Loading from "../../components/loading/Loading";
+import Video from "../../components/video/Video";
 import "./singleMovie.scss";
+import "./responsive.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -26,7 +26,7 @@ const SingleMovie = () => {
 
   const infoMovie = movie.movie;
   const name = infoMovie?.slug;
-  console.log(name);
+  const episode_current = infoMovie?.episode_current;
   const cateMovie = [];
   const countryMovie = [];
   if (category) {
@@ -52,14 +52,7 @@ const SingleMovie = () => {
           <div className="singleMovieCard">
             <div className="singleMovieName">{infoMovie?.name}</div>
             <div className="singleMovieTop">
-              <img
-                src={
-                  infoMovie?.poster_url
-                    ? infoMovie?.poster_url
-                    : infoMovie?.thumb_url
-                }
-                alt=""
-              />
+              <img src={infoMovie?.thumb_url} alt="" />
               <div className="singleMovieInfo">
                 <div>
                   <div className="singleMovieInfoText">
@@ -149,7 +142,11 @@ const SingleMovie = () => {
           </div>
 
           <div className="singleMovieVideo">
-            <Video movie={movie} name={name} />
+            <Video
+              movie={movie}
+              name={name}
+              episode_current={episode_current}
+            />
           </div>
         </>
       )}

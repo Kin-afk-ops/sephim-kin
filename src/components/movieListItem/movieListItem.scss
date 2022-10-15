@@ -5,10 +5,31 @@
   cursor: pointer;
   margin-top: 30px;
 
+  &:hover {
+    .movieListItemPoster {
+      box-shadow: 0 0 20px -1px #ff3333;
+      img {
+        transform: scale(1.1);
+        transition: 0.3s;
+      }
+    }
+
+    .movieListItemName {
+      transform: scale(1.1);
+      transition: 0.3s;
+      color: #ff3333;
+      font-weight: 500;
+    }
+  }
+
   .movieListItemPoster {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 5px;
     img {
       width: 100%;
-      height: 210px;
+      height: 100%;
       object-fit: cover;
     }
 
@@ -28,11 +49,5 @@
     font-size: 16px;
     text-align: center;
     color: white;
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-      color: rgb(238, 238, 34);
-    }
   }
 }

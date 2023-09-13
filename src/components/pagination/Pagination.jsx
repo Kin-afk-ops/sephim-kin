@@ -1,12 +1,7 @@
 import "./pagination.scss";
 import ReactPaginate from "react-paginate";
 
-const Pagination = ({
-  totalMovie,
-  moviesPerPage,
-  setCurrentPage,
-  currentPage,
-}) => {
+const Pagination = ({ totalMovie, moviesPerPage, type, path, currentPage }) => {
   let pages = [];
 
   for (var i = 1; i <= Math.ceil(totalMovie / moviesPerPage); i++) {
@@ -14,24 +9,33 @@ const Pagination = ({
   }
 
   const handlePageClick = (data) => {
-    setCurrentPage(data.selected + 1);
+    console.log(data);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    window.location.replace(`/lists/${type}/${path}?page=${data.selected + 1}`);
   };
 
   return (
     <div>
       <div className="pagination">
-        <div>
-          <ReactPaginate
-            className="paginationPage"
-            previousLabel="<<"
-            nextLabel=">>"
-            breakLabel={"..."}
-            pageCount={pages.length}
-            marginPagesDisplayed={2}
-            onPageChange={handlePageClick}
-            activeClassName={"active"}
-          />
-        </div>
+        <ReactPaginate
+          onPageChange={handlePageClick}
+          className="paginationPage"
+          previousLabel="<<"
+          nextLabel=">>"
+          breakLabel={"..."}
+          pageCount={pages.length}
+          marginPagesDisplayed={2}
+          forcePage={parseInt(currentPage) - 1}
+          previousClassName="prev"
+          nextClassName="next"
+          activeClassName="active"
+        />
+      </div>
+      <div className="currentPage">
+        Trang hiện tại: {currentPage}/{pages.length}
       </div>
     </div>
   );

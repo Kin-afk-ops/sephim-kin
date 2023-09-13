@@ -1,10 +1,10 @@
 import React from "react";
 import "./search.scss";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
 import MovieListItem from "../../components/movieListItem/MovieListItem";
 import Lists from "../lists/Lists";
+import axiosInstance from "../../config";
 
 const Search = React.memo(() => {
   const removeAccents = (str) => {
@@ -15,12 +15,17 @@ const Search = React.memo(() => {
       .replace(/Đ/g, "D");
   };
 
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
   const [movies, setMovies] = useState([]);
   const location = useLocation();
   const query = removeAccents(location.pathname.split("/")[2].toLowerCase());
   useEffect(() => {
     const getMovie = async () => {
-      const res = await axios.get("/movie");
+      const res = await axiosInstance.get("/movie");
       setMovies(res.data);
     };
     getMovie();

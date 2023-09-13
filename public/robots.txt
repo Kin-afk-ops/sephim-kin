@@ -1,0 +1,4 @@
+Sitemap: https://sephim.tk/sitemap.xml
+User-agent: *
+
+Allow: /

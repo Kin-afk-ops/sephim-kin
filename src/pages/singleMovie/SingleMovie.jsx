@@ -2,9 +2,10 @@ import Loading from "../../components/loading/Loading";
 import Video from "../../components/video/Video";
 import "./singleMovie.scss";
 import "./responsive.scss";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axiosInstance from "../../config";
+import { Helmet } from "react-helmet";
 
 const SingleMovie = () => {
   const [movie, setMovie] = useState([]);
@@ -15,7 +16,7 @@ const SingleMovie = () => {
 
   useEffect(() => {
     const getMovie = async () => {
-      const res = await axios.get("https://ophim1.com/phim/" + path);
+      const res = await axiosInstance.get("https://ophim1.com/phim/" + path);
       setMovie(res.data);
       setCategory(res.data.movie.category);
       setCountry(res.data.movie.country);
@@ -24,20 +25,25 @@ const SingleMovie = () => {
     getMovie();
   }, [path]);
 
-  const infoMovie = movie.movie;
+  const infoMovie = movie?.movie;
   const name = infoMovie?.slug;
   const episode_current = infoMovie?.episode_current;
   const cateMovie = [];
   const countryMovie = [];
-  if (category) {
-    category.map((c) => {
+  let nameTitle = "";
+  if (typeof infoMovie !== "undefined") {
+    nameTitle = infoMovie?.name;
+  }
+
+  if (category.length !== 0) {
+    category.forEach((c) => {
       const { name } = c;
       cateMovie.push(" " + name);
     });
   }
 
   if (countryMovie) {
-    country.map((c) => {
+    country.forEach((c) => {
       const { name } = c;
       countryMovie.push(" " + name);
     });
@@ -45,6 +51,9 @@ const SingleMovie = () => {
 
   return (
     <div className="singleMovie">
+      <Helmet>
+        <title>Xem phim {nameTitle} -- sePhim</title>
+      </Helmet>
       {!infoMovie ? (
         <Loading />
       ) : (
@@ -134,10 +143,9 @@ const SingleMovie = () => {
                   <hr />
                 </div>
               </div>
-              <div
-                className="singleMovieContent"
-                dangerouslySetInnerHTML={{ __html: infoMovie?.content }}
-              ></div>
+              <div className="singleMovieContent">
+                <p dangerouslySetInnerHTML={{ __html: infoMovie?.content }}></p>
+              </div>
             </div>
           </div>
 

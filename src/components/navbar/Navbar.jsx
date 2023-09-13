@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import "./responsive.scss";
+import axiosInstance from "../../config";
 
 const Navbar = () => {
   const [categories, setCategories] = useState([]);
@@ -11,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const res = await axios.get("/categories");
+      const res = await axiosInstance.get("/categories");
 
       setCategories(res.data);
     };
@@ -21,7 +21,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const getCountry = async () => {
-      const res = await axios.get("/country");
+      const res = await axiosInstance.get("/country");
 
       setCountry(res.data);
     };
@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <label for="buttonCheck" className="phoneButton">
+      <label htmlFor="buttonCheck" className="phoneButton">
         <i className="fa-solid fa-bars"></i>
       </label>
 
@@ -41,12 +41,17 @@ const Navbar = () => {
         id="buttonCheck"
         className="buttonCheckbox"
       />
-      <label for="buttonCheck" className="overlay"></label>
+      <label htmlFor="buttonCheck" className="overlay"></label>
       <div className="navbarList">
+        <label htmlFor="buttonCheck" className="navbarListCloseIcon">
+          <i className="fa-regular fa-circle-xmark"></i>
+        </label>
         <div className="navbarItems">
           <div>
-            <i className="fa-solid fa-bars"></i>
-            Thể loại
+            <span>
+              <i className="fa-solid fa-bars"></i>
+              Thể loại
+            </span>
           </div>
           <ul>
             {categories.length !== 0 &&
@@ -54,7 +59,7 @@ const Navbar = () => {
                 <li key={index}>
                   <Link
                     className="link"
-                    to={`/lists/categories/${c.name.toLowerCase()}`}
+                    to={`/lists/categories/${c.name.toLowerCase()}?page=1`}
                   >
                     {c.name}
                   </Link>
@@ -65,8 +70,10 @@ const Navbar = () => {
 
         <div className="navbarItems">
           <div>
-            <i className="fa-sharp fa-solid fa-globe"></i>
-            Quốc gia
+            <span>
+              <i className="fa-sharp fa-solid fa-globe"></i>
+              Quốc gia
+            </span>
           </div>
           <ul>
             {country.length !== 0 &&
@@ -74,7 +81,7 @@ const Navbar = () => {
                 <li key={index}>
                   <Link
                     className="link navbarItemsChild"
-                    to={`/lists/country/${c.name.toLowerCase()}`}
+                    to={`/lists/country/${c.name.toLowerCase()}?page=1`}
                   >
                     {c.name}
                   </Link>
@@ -86,7 +93,7 @@ const Navbar = () => {
         <div className="navbarItems">
           <Link
             className="link navbarItemsLink"
-            to={`/lists/categories/animeMovie`}
+            to={`/lists/categories/animeMovie?page=1`}
           >
             Anime chiếu rạp
           </Link>
@@ -95,7 +102,7 @@ const Navbar = () => {
         <div className="navbarItems">
           <Link
             className="link navbarItemsLink"
-            to={`/lists/categories/animeSeries`}
+            to={`/lists/categories/animeSeries?page=1`}
           >
             Anime series
           </Link>

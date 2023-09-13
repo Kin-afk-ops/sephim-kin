@@ -5,6 +5,9 @@
     width: 100%;
 
     .navbarList {
+      .navbarListCloseIcon {
+        display: block;
+      }
       .navbarItems {
         height: 40px;
         div {
@@ -14,14 +17,13 @@
 
           &:hover {
             + ul {
-              transform: translate(20%);
+              transform: translate(133%);
             }
           }
         }
 
         ul {
           flex-direction: column;
-          padding-left: 30px;
           width: 150px;
           transition: 0.5s;
           display: flex;
@@ -70,14 +72,13 @@
 
           &:hover {
             + ul {
-              transform: translate(20%);
+              transform: translate(133%);
             }
           }
         }
 
         ul {
           flex-direction: column;
-          padding-left: 30px;
           width: 150px;
           transition: 0.5s;
           display: flex;
@@ -103,7 +104,7 @@
     }
 
     input:checked ~ .navbarList {
-      transform: translateX(-75%);
+      transform: translateX(-80%);
     }
 
     input:checked ~ .overlay {
@@ -117,6 +118,9 @@
     width: 100%;
 
     .navbarList {
+      .navbarListCloseIcon {
+        display: block;
+      }
       .navbarItems {
         height: 40px;
         div {
@@ -126,14 +130,13 @@
 
           &:hover {
             + ul {
-              transform: translate(20%);
+              transform: translate(133%);
             }
           }
         }
 
         ul {
           flex-direction: column;
-          padding-left: 30px;
           width: 150px;
           transition: 0.5s;
           display: flex;

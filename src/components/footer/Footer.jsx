@@ -3,7 +3,7 @@ import "./responsive.scss";
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="footerTag">
         Những bộ phim hay nhất, Xem phim online, Xem phim miễn phí, tvb, Tội
         phạm, Tình yêu Phim ma, marvel, Cảnh sát, Người ngoài hành, Phim viễn
@@ -39,7 +39,7 @@ const Footer = () => {
         tiếng Việt, Phim Thái Lan Mỹ Trung Quốc Hồng Kong thuyết minh Lồng tiếng
         vietsub hay nhất mới nhât...
       </div>
-    </div>
+    </footer>
   );
 };
 

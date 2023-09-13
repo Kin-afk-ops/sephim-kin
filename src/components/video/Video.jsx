@@ -10,24 +10,23 @@ const Video = (props) => {
   const slug = location.pathname.split("/")[3];
   let dataArray = [];
   const [serverMovie, setServerMovie] = useState(infoMovie[0].server_name);
-  const [statusServer, setStatusServer] = useState(false);
 
   let urlMovie = "";
   let fileName = "";
   const severName = [];
 
-  infoMovie.map((i) => {
+  infoMovie?.forEach((i) => {
     severName.push(i.server_name);
   });
 
-  infoMovie.map((infoData) => {
+  infoMovie?.forEach((infoData) => {
     if (infoData.server_name === serverMovie) {
       dataArray = infoData.server_data;
     }
   });
 
   if (dataArray.length !== 0) {
-    dataArray.map((data) => {
+    dataArray.forEach((data) => {
       if (data.slug === slug || data.slug === "full") {
         urlMovie = data.link_embed;
         fileName = data.filename;
@@ -35,20 +34,40 @@ const Video = (props) => {
     });
   }
 
+  const handleClick = () => {
+    if (window.screen.width <= 480) {
+      window.scrollTo({
+        top: 1000,
+        behavior: "smooth",
+      });
+    } else {
+      window.scrollTo({
+        top: 850,
+        behavior: "smooth",
+      });
+    }
+
+    console.log(window);
+  };
+
+  // window.onscroll = () => {
+  //   console.log(window.pageYOffset);
+  // };
+
   return (
     <div className="video">
       <h3>{fileName}</h3>
       <div className="container">
         <iframe
           className="responsive-iframe"
-          allowFullScreen
           style={{ border: "none" }}
+          allowFullScreen={true}
           width="720"
           height="480"
           src={urlMovie}
+          loading="lazy"
         ></iframe>
       </div>
-
       <div className="videoServer">
         {severName.map((s, index) => (
           <button
@@ -70,6 +89,7 @@ const Video = (props) => {
                   className={d.slug === slug ? "link ep epActive" : "link ep"}
                   to={`/watch/${name}/${d.slug}`}
                   key={index}
+                  onClick={handleClick}
                 >
                   {d.name}
                 </Link>

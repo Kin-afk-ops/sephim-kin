@@ -2,7 +2,7 @@ import "./header.scss";
 import "./responsive.scss";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Header = () => {
   const [query, setQuery] = useState("");
@@ -14,22 +14,25 @@ const Header = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.code === "Enter") {
-      window.location.replace(`/lists/search/${query.toLowerCase()}`);
+    if (e.keyCode === 13) {
+      window.location.replace(`/lists/search/${query.toLowerCase()}?page=1`);
     }
   };
 
   const handleClick = () => {
-    window.location.replace(`/lists/search/${query.toLowerCase()}`);
+    window.location.replace(`/lists/search/${query.toLowerCase()}?page=1`);
   };
 
   return (
-    <div className={isScrolled ? "header scroll" : "header"}>
+    <header id="header" className={isScrolled ? "header scroll" : "header"}>
       <Link to="/" className="headerLogo link">
         <img src={logo} alt="" />
       </Link>
       <div className="headerInput">
-        <label for="headerSearchCheckbox" className="headerSearchCheckboxLogo">
+        <label
+          htmlFor="headerSearchCheckbox"
+          className="headerSearchCheckboxLogo"
+        >
           <i className="fa-solid fa-magnifying-glass"></i>
         </label>
 
@@ -40,19 +43,20 @@ const Header = () => {
           className="headerSearchCheckbox"
         />
 
-        <label for="headerSearchCheckbox" className="overlay"></label>
+        <label htmlFor="headerSearchCheckbox" className="overlay"></label>
         <input
           type="text"
           placeholder="Nhập tên bộ phim bạn muốn tìm kiếm!"
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
+          enterKeyHint="search"
         />
       </div>
 
       <button className="headerButton" onClick={handleClick}>
         Tìm kiếm
       </button>
-    </div>
+    </header>
   );
 };
 

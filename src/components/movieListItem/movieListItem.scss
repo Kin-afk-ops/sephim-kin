@@ -1,5 +1,5 @@
 .movieListItem {
-  width: 23%;
+  width: 25%;
   padding: 0 8px;
   position: relative;
   cursor: pointer;
@@ -8,9 +8,12 @@
   &:hover {
     .movieListItemPoster {
       box-shadow: 0 0 20px -1px #ff3333;
-      img {
-        transform: scale(1.1);
-        transition: 0.3s;
+
+      span {
+        img {
+          transform: scale(1.1);
+          transition: 0.3s;
+        }
       }
     }
 
@@ -23,6 +26,10 @@
   }
 
   .movieListItemPoster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffcc;
     width: 100%;
     height: 210px;
     overflow: hidden;
@@ -30,7 +37,6 @@
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
 
     div {

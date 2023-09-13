@@ -1,9 +1,10 @@
 import "./home.scss";
 import "./responsive.scss";
 import MovieLists from "../../components/movieLists/MovieLists";
-import axios from "axios";
+
 import { useEffect, useState } from "react";
 import Loading from "../../components/loading/Loading";
+import axiosInstance from "../../config";
 
 const Home = () => {
   const [movies, setMovies] = useState({});
@@ -12,10 +13,15 @@ const Home = () => {
   const [hero, setHero] = useState({});
   const [series, setSeries] = useState({});
 
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
   useEffect(() => {
     let mounted = true;
     const fetchMovies = async () => {
-      const res = await axios.get("/movie");
+      const res = await axiosInstance.get("/movie");
       if (mounted) {
         setMovies({
           data: res.data,
@@ -26,7 +32,7 @@ const Home = () => {
     };
 
     const fetchMovie = async () => {
-      const res = await axios.get("/movie/categories?q=movie");
+      const res = await axiosInstance.get("/movie/categories?q=movie");
       setMovie({
         data: res.data,
         name: "Phim điện ảnh",
@@ -35,7 +41,7 @@ const Home = () => {
     };
 
     const fetchAnime = async () => {
-      const res = await axios.get("/movie/categories?q=anime");
+      const res = await axiosInstance.get("/movie/categories?q=anime");
       setAnime({
         data: res.data,
         name: "Anime",
@@ -44,7 +50,7 @@ const Home = () => {
     };
 
     const fetchHero = async () => {
-      const res = await axios.get("/movie/categories?q=hero");
+      const res = await axiosInstance.get("/movie/categories?q=hero");
       setHero({
         data: res.data,
         name: "Phim Siêu anh hùng",
@@ -53,7 +59,7 @@ const Home = () => {
     };
 
     const fetchSeries = async () => {
-      const res = await axios.get("/movie/categories?q=series");
+      const res = await axiosInstance.get("/movie/categories?q=series");
       setSeries({
         data: res.data,
         name: "Series / Phim bộ",

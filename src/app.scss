@@ -4,11 +4,7 @@
 
 .app {
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(1, 1, 11, 1) 0%,
-    rgba(8, 26, 79, 1) 93%
-  );
+  background-image: url("./assets/images/background.jpg");
   overflow: hidden;
   overflow-y: overlay;
 }
